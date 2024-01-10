@@ -1,1 +1,1 @@
-Swift run > run_log.txt
+Swift run 2> run_log.txt
