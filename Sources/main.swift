@@ -7,7 +7,15 @@ let screenHeight: Int32 = 450
 Raylib.initWindow(screenWidth, screenHeight, "A Bird Game")
 Raylib.setTargetFPS(60)
 
-var state = GameplayState(prevState: NilState.instance)
+let gameState = GameplayState(prevState: NilState.instance)
+let menuState = MenuState(prevState: NilState.instance)
+let mainStateMngr = StateManager(nilState: NilState.instance)
+[
+    gameState,
+    menuState
+].forEach(mainStateMngr.addState)
+
+mainStateMngr.setState(to: gameState)
 
 // MAIN LOOP
 while Raylib.windowShouldClose == false {
@@ -15,7 +23,7 @@ while Raylib.windowShouldClose == false {
     Raylib.beginDrawing()
 
     // Yeah, render code is just in update.
-    state.update()
+    mainStateMngr.currState.update()
 
     Raylib.drawFPS(10, 10)
     Raylib.endDrawing()

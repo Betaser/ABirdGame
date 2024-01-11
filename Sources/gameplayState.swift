@@ -5,26 +5,32 @@ public class GameplayState: GameState {
 
     var playerColor: Color = .black
     var prevPos = Vector2.zero
+    // We initialize bird in init, so blah is just some dumb representation of player.
     var player = Bird.blah
 
     init(prevState: GameState) {
         reinit(prevState: prevState)
     }
+    deinit {
+        print("no gameplay :(")
+    }
 
     func update() {
-        print(player.pos)
         prevPos = player.pos
         player.updatePhysics()
 
+        // Debug stuff that shouldn't be organized into player.
         if Raylib.isMouseButtonDown(.left) {
             player.pos = Raylib.getMousePosition()
             playerColor = GameplayState.randomColors.randomElement() ?? .black
         }
 
+        player.update()
+
+        // Render stuff for now just is here.
         let playerSize = max((abs(player.pos.x - prevPos.x) + abs(player.pos.y - prevPos.y) / 10.0), 
                              10)
 
-        // Render stuff for now just is here.
         Raylib.clearBackground(.rayWhite)
         Raylib.drawText("Tweet tweet!!", 425, 25, 25, .darkGray)
         Raylib.drawCircleV(player.pos, playerSize, playerColor)
