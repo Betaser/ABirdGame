@@ -15,6 +15,19 @@ public class GameplayState: GameState {
         print("no gameplay :(")
     }
 
+    var singleStore: [String : Storable] {
+        get {
+            print("For now, gameplay doesn't need to use loading or anything from menustate.")
+            return NilState.instance.store
+        }
+        set {
+            _ = newValue
+        }
+    }
+
+    func singleStore(key: String, toStore: Storable) {
+    }
+
     func update() {
         prevPos = player.pos
         player.updatePhysics()

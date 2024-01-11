@@ -1,8 +1,9 @@
 import Raylib
 // You can't have a main.swift and a static func main entrypoint.
 
-let screenWidth: Int32 = 800
-let screenHeight: Int32 = 450
+// Let's just say for now we do 
+let screenWidth: Int32 = 1280
+let screenHeight: Int32 = 720
 
 Raylib.initWindow(screenWidth, screenHeight, "A Bird Game")
 Raylib.setTargetFPS(60)
