@@ -8,25 +8,25 @@ public class Bird {
         print("bird deinit")
     }
 
-    var pos = Vector2(x: 0, y: 0)
-    var vel = Vector2(x: 0, y: 0)
+    var pos = Vector2.zero
+    var vel = Vector2.zero
+    var initialVel = Vector2.zero
     var gravEnabled = false
     
 
     init(pos: Vector2, vel: Vector2) {
         self.pos = pos
         self.vel = vel
+        initialVel = vel
         gravEnabled = false
     }
 
     func update() {
-        if Raylib.isKeyDown(.letterG) {
+        if Raylib.isKeyPressed(.letterG) {
             gravEnabled = !gravEnabled
         }
 
-        if gravEnabled {
-            vel = vel + Vector2(x: 0, y: 0.5)
-        }
+        vel = if gravEnabled { vel + Vector2(x: 0, y: 0.5) } else { initialVel }
 
         if pos.y + vel.y >= Float(screenHeight + 20) {
             // Switch game state to menu state.

@@ -8,7 +8,13 @@ public class MenuState: GameState {
     }
 
     func update() {
+        Raylib.clearBackground(.white)
         Raylib.drawText(msg, 425, 40, 40, .black)
+
+        if Raylib.isMouseButtonDown(.left) {
+            mainStateMngr.setState(to: gameplayState)
+            return
+        }
     }
 
     func reinit(prevState state: GameState) {

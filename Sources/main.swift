@@ -7,15 +7,15 @@ let screenHeight: Int32 = 450
 Raylib.initWindow(screenWidth, screenHeight, "A Bird Game")
 Raylib.setTargetFPS(60)
 
-let gameState = GameplayState(prevState: NilState.instance)
+let gameplayState = GameplayState(prevState: NilState.instance)
 let menuState = MenuState(prevState: NilState.instance)
 let mainStateMngr = StateManager(nilState: NilState.instance)
 [
-    gameState,
+    gameplayState,
     menuState
 ].forEach(mainStateMngr.addState)
 
-mainStateMngr.setState(to: gameState)
+mainStateMngr.setState(to: gameplayState)
 
 // MAIN LOOP
 while Raylib.windowShouldClose == false {
