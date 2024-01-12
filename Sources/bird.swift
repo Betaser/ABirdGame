@@ -13,7 +13,6 @@ public class Bird {
     var initialVel = Vector2.zero
     var gravEnabled = false
     
-
     init(pos: Vector2, vel: Vector2) {
         self.pos = pos
         self.vel = vel
@@ -42,9 +41,8 @@ public class Bird {
             print(menuState.store)
 
             let calcMenuText: (MenuState) -> RenderInfo = 
-            { state in RenderInfo.text(
+            { state in try! RenderInfo.horzCenteredText(
                 data: state.msg,
-                posX: 225,
                 posY: 40,
                 size: 40,
                 color: .black) }

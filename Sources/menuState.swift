@@ -51,7 +51,3 @@ public class MenuState: GameState {
         renderInfos = [:]
     }
 }
-
-enum RenderInfo {
-    case text(data: String, posX: Int32, posY: Int32, size: Int32, color: Color)
-}

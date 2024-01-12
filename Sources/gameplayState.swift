@@ -25,9 +25,6 @@ public class GameplayState: GameState {
         }
     }
 
-    func singleStore(key: String, toStore: Storable) {
-    }
-
     func update() {
         prevPos = player.pos
         player.updatePhysics()
